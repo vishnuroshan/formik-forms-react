@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { Container, CssBaseline, Typography, AppBar, Tab, Box, Tabs, Link } from '@material-ui/core'
+import { Container, CssBaseline, AppBar, Tab, Box, Tabs, Link } from '@material-ui/core'
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 function TabPanel(props) {
@@ -70,10 +70,10 @@ function App() {
     alert('login successful');
   }
 
-  const miscHandler = (values) => {
-    console.log('misc:::> ', values);
-    alert('misc successful');
-  }
+  // const miscHandler = (values) => {
+  //   console.log('misc:::> ', values);
+  //   alert('misc successful');
+  // }
   return (
     <div className={classes.root}>
       <AppBar position="static">
