@@ -1,5 +1,8 @@
 import React from 'react';
-import { TextField, Button, Grid, TextareaAutosize, Typography } from '@material-ui/core'
+import { TextField, Button, Grid, TextareaAutosize, Typography, FormControl, InputLabel, Select, } from '@material-ui/core';
+import { KeyboardDatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
     },
     fullwidth: {
         width: '100%'
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 200,
     },
     errortext: {
         color: 'red',
@@ -52,11 +59,20 @@ const validationSchema = Yup.object({
         .optional()
         .min(20, 'Must be atleast 20 characters')
         .max(100, 'too long'),
+    sex: Yup.string()
+        .default('')
+        .oneOf(['male', 'female', '', 'transgender']),
+    relationship: Yup.string()
+        .default('')
+        .oneOf(['single', 'married', '', 'widowed']),
+    dob: Yup.date()
+        .optional()
+        .max(new Date()),
     confirmPass: Yup.string()
         .required()
         .oneOf([Yup.ref('password'), null], 'Passwords must match'),
-    firstname: Yup.string().required(),
-    lastname: Yup.string().optional()
+    firstname: Yup.string().trim().required(),
+    lastname: Yup.string().trim().optional()
 
 });
 
@@ -70,14 +86,15 @@ const Signup = (props) => {
             confirmPass: '',
             firstname: '',
             lastname: '',
-            aboutme: ''
+            aboutme: '',
+            sex: '',
+            relationship: '',
+            dob: new Date()
         },
         validateOnChange: false,
         validateOnBlur: true,
         validationSchema,
-        onSubmit: values => {
-            console.log(values)
-        }
+        onSubmit: props.submit
     });
 
     return (
@@ -151,6 +168,67 @@ const Signup = (props) => {
                         </p>
                     </Grid>
 
+                    <Grid item xs={12}>
+                        <FormControl variant="outlined" className={classes.formControl}>
+                            <InputLabel htmlFor="outlined-Sex-select">Sex</InputLabel>
+                            <Select
+                                native
+                                value={values.sex}
+                                onChange={handleChange}
+                                label="Sex"
+                                name="sex"
+                                inputProps={{
+                                    name: 'sex'
+                                }}>
+                                <option aria-label="None" value="" />
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="transgender">Transgender</option>
+                                <option value="">Rather not say</option>
+                            </Select>
+
+                        </FormControl>
+
+                        <FormControl variant="outlined" className={classes.formControl}>
+                            <InputLabel htmlFor="outlined-relationship-select">relationship</InputLabel>
+                            <Select
+                                native
+                                value={values.relationship}
+                                onChange={handleChange}
+                                label="relationship"
+                                name="relationship"
+                                inputProps={{
+                                    name: 'relationship'
+                                }}>
+                                <option aria-label="None" value="" />
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                                <option value="widowed">Widowed</option>
+                                <option value="">Rather not say</option>
+                            </Select>
+
+                        </FormControl>
+                        <p className={classes.errortext}>
+                            {errors.sex ? errors.sex : null}
+                        </p>
+                    </Grid>
+
+                    {/* <Grid item xs={12}>
+                        <MuiPickersUtilsProvider utils={MomentUtils}>
+                            <KeyboardDatePicker
+                                margin="normal"
+                                name="dob"
+                                label="Date of birth"
+                                // format="MM/dd/yyyy"
+                                value={values.dob}
+                                onChange={handleChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
+                    </Grid> */}
+
                     <Grid item xs={12} >
                         <TextField
                             className={classes.fullwidth}
@@ -187,7 +265,7 @@ const Signup = (props) => {
                             type="submit"
                             variant="outlined"
                             color="secondary">
-                            Submit
+                            Sign-up
                         </Button>
                     </Grid>
                 </Grid>
