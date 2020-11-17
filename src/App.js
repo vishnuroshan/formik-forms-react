@@ -98,7 +98,8 @@ function App() {
       <TabPanel value={value} index={2}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          <Signup submit={miscHandler} />
+          {/* <Signup submit={miscHandler} /> */}
+          <h1>Work in progress...</h1>
         </Container>
       </TabPanel>
 
