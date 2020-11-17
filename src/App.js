@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { Container, CssBaseline, Typography, AppBar, Tab, Box, Tabs } from '@material-ui/core'
+import { Container, CssBaseline, Typography, AppBar, Tab, Box, Tabs, Link } from '@material-ui/core'
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 function TabPanel(props) {
@@ -103,9 +103,9 @@ function App() {
       </TabPanel>
 
       <AppBar position="fixed" color="primary" className={classes.appBar}>
-        <Typography component={'h1'} style={{ alignItems: 'center' }} className={classes.title} variant="h6" noWrap>
-          Forms
-          </Typography>
+        <Link href="https://github.com/vishnuroshan/formik-forms-react" style={{ fontSize: '1.5rem', color: "white" }} onClick={(e) => e.preventDefault}>
+          repository link
+        </Link>
       </AppBar>
     </div>
 
