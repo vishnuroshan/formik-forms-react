@@ -92,7 +92,7 @@ const Signup = (props) => {
             dob: new Date()
         },
         validateOnChange: false,
-        validateOnBlur: true,
+        validateOnBlur: false,
         validationSchema,
         onSubmit: props.submit
     });
