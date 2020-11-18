@@ -71,6 +71,11 @@ class Misc extends Component {
                             <Slider
                                 value={this.state.slideValue}
                                 onChange={(_e, newValue) => this.setState({ slideValue: newValue })} aria-labelledby="continuous-slider" />
+                            <Paper className={classes.paper} elevation={3}>
+                                <h4>
+                                    value: {this.state.slideValue}
+                                </h4>
+                            </Paper>
                         </Grid>
 
                         {this.state.content.length > 0 ? <Grid item xs={12}>
