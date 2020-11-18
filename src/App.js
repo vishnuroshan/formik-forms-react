@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Container, CssBaseline, AppBar, Tab, Box, Tabs, Link } from '@material-ui/core'
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
+import Misc from './components/Misc/Misc';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -70,10 +71,11 @@ function App() {
     alert('login successful');
   }
 
-  // const miscHandler = (values) => {
-  //   console.log('misc:::> ', values);
-  //   alert('misc successful');
-  // }
+  const miscHandler = (values) => {
+    console.log('misc:::> ', values);
+    alert('misc successful');
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -98,8 +100,7 @@ function App() {
       <TabPanel value={value} index={2}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          {/* <Signup submit={miscHandler} /> */}
-          <h1>Work in progress...</h1>
+          <Misc submit={miscHandler} />
         </Container>
       </TabPanel>
 

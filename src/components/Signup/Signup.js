@@ -4,7 +4,7 @@ import { TextField, Button, Grid, TextareaAutosize, Typography, FormControl, Inp
 // import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 // import MomentUtils from '@date-io/moment';
 import { useFormik } from 'formik';
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -208,26 +208,7 @@ const Signup = (props) => {
                             </Select>
 
                         </FormControl>
-                        <p className={classes.errortext}>
-                            {errors.sex ? errors.sex : null}
-                        </p>
                     </Grid>
-
-                    {/* <Grid item xs={12}>
-                        <MuiPickersUtilsProvider utils={MomentUtils}>
-                            <KeyboardDatePicker
-                                margin="normal"
-                                name="dob"
-                                label="Date of birth"
-                                // format="MM/dd/yyyy"
-                                value={values.dob}
-                                onChange={handleChange}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
-                        </MuiPickersUtilsProvider>
-                    </Grid> */}
 
                     <Grid item xs={12} >
                         <TextField
